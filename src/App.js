@@ -1,7 +1,12 @@
 import logo from './logo.svg';
 import './App.css';
+import { useState } from 'react';
+import SelectComponent from './components/SelectComponent';
+import { AppGraficoSimple } from './components/AppGraficoSimple';
 
 function App() {
+  const [selectedCurrencyFrom, setSelectedCurrencyFrom] = useState('USD');
+  const [selectedCurrencyTo, setSelectedCurrencyTo] = useState('MXN');
   return (
     <div className="App">
       <header className="App-header">
@@ -18,6 +23,16 @@ function App() {
           Learn React
         </a>
       </header>
+      <div className='contenedor'>
+        <div>
+          <SelectComponent onSelectChange={setSelectedCurrencyFrom}/>
+          <SelectComponent onSelectChange={setSelectedCurrencyTo}/>
+          {selectedCurrencyFrom} - {selectedCurrencyTo}
+        </div>
+        <div className='contenedor-grafico'>
+        <AppGraficoSimple selectedCurrencyFrom={selectedCurrencyFrom}  selectedCurrencyTo={selectedCurrencyTo}/>
+        </div>
+      </div>
     </div>
   );
 }
