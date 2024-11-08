@@ -2,7 +2,7 @@ import React, { useEffect, useRef } from 'react';
 import { createChart, ColorType } from 'lightweight-charts';
 import { ChartComponent } from './ChartComponent';
 
-export function AppGraficoSimple({ selectedCurrencyFrom, selectedCurrencyTo }) {
+export function AppGraficoSimple({ selectedCurrencyFrom, selectedCurrencyTo, dateSelected}) {
   const initialData = [
     { time: '2018-12-22', value: 32.51 },
     { time: '2018-12-23', value: 31.11 },
@@ -17,6 +17,6 @@ export function AppGraficoSimple({ selectedCurrencyFrom, selectedCurrencyTo }) {
   ];
 
   return (
-    <ChartComponent selectedCurrencyFrom={selectedCurrencyFrom} selectedCurrencyTo={selectedCurrencyTo} data={initialData} />
+    <ChartComponent selectedCurrencyFrom={selectedCurrencyFrom} selectedCurrencyTo={selectedCurrencyTo} dateSelected={dateSelected} data={initialData} />
   );
 }

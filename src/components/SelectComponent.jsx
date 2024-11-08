@@ -2,7 +2,6 @@ import React, {useState} from "react";
 
 const SelectComponent = ({onSelectChange}) => {
     const handleChange = (event) => {
-        console.log(event.target.value)
         onSelectChange(event.target.value);
     };
     return (

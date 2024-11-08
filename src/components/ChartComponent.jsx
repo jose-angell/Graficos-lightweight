@@ -1,7 +1,7 @@
 import React, { useEffect, useRef } from 'react';
 import { createChart, ColorType } from 'lightweight-charts';
 
-export const ChartComponent = ({ selectedCurrencyFrom, selectedCurrencyTo, data, colors }) => {
+export const ChartComponent = ({ selectedCurrencyFrom, selectedCurrencyTo,dateSelected, data, colors }) => {
   const {
     backgroundColor = 'black',
     lineColor = '#2962FF',
@@ -50,7 +50,7 @@ export const ChartComponent = ({ selectedCurrencyFrom, selectedCurrencyTo, data,
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const url = `https://api.frankfurter.app/2024-08-01..?from=${selectedCurrencyFrom}&to=${selectedCurrencyTo}`;
+        const url = `https://api.frankfurter.app/${dateSelected}..?from=${selectedCurrencyFrom}&to=${selectedCurrencyTo}`;
 
         const response = await fetch(url);
         const apiData = await response.json();
@@ -68,7 +68,7 @@ export const ChartComponent = ({ selectedCurrencyFrom, selectedCurrencyTo, data,
     };
 
     fetchData();
-  }, [selectedCurrencyFrom,selectedCurrencyTo]);
+  }, [selectedCurrencyFrom,selectedCurrencyTo, dateSelected]);
 
   return (
     <div ref={chartContainerRef} style={{ width: '100%', height: '100%' }} />

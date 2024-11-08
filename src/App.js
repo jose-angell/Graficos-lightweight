@@ -3,10 +3,12 @@ import './App.css';
 import { useState } from 'react';
 import SelectComponent from './components/SelectComponent';
 import { AppGraficoSimple } from './components/AppGraficoSimple';
+import RadioGroupComponent from './components/RadioGroupComponent';
 
 function App() {
   const [selectedCurrencyFrom, setSelectedCurrencyFrom] = useState('USD');
   const [selectedCurrencyTo, setSelectedCurrencyTo] = useState('MXN');
+  const [dateSelected, setDateSelected] = useState('2024-01-01');
   return (
     <div className="App">
       <header className="App-header">
@@ -27,10 +29,11 @@ function App() {
         <div>
           <SelectComponent onSelectChange={setSelectedCurrencyFrom}/>
           <SelectComponent onSelectChange={setSelectedCurrencyTo}/>
-          {selectedCurrencyFrom} - {selectedCurrencyTo}
+          <RadioGroupComponent onRadioChange={setDateSelected}/> 
+          {selectedCurrencyFrom} - {selectedCurrencyTo} / {dateSelected}
         </div>
         <div className='contenedor-grafico'>
-        <AppGraficoSimple selectedCurrencyFrom={selectedCurrencyFrom}  selectedCurrencyTo={selectedCurrencyTo}/>
+        <AppGraficoSimple selectedCurrencyFrom={selectedCurrencyFrom}  selectedCurrencyTo={selectedCurrencyTo} dateSelected={dateSelected}/>
         </div>
       </div>
     </div>
